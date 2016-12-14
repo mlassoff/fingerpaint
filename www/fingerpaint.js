@@ -8,6 +8,14 @@ window.onload=function()
             context.clearRect(0,0, context.canvas.width, context.canvas.height);       
         }, false);
     
+    //Back Button
+    document.getElementById('btnBack').addEventListener('click', function(){
+            document.getElementById('myCanvas').style.display = "block";
+            document.getElementById('saveArea').style.display = "none";
+            document.getElementById('tools').style.display = "block";
+            
+        }, false);
+    
     //Width Scale
     document.getElementById('lineWidth').addEventListener('change', function(){
             context.lineWidth = document.getElementById('lineWidth').value;
@@ -16,6 +24,16 @@ window.onload=function()
     //Color
     document.getElementById('colorChange').addEventListener('change', function(){
             context.strokeStyle = document.getElementById('colorChange').value;
+        }, false);
+    
+    //Save
+    document.getElementById('btnSave').addEventListener('click', function(){
+            document.getElementById('myCanvas').style.display = "none";
+            document.getElementById('saveArea').style.display = "block";
+            document.getElementById('tools').style.display = "none";
+            
+            var dataURL = document.getElementById('myCanvas').toDataURL();
+            document.getElementById('canvasImg').src = dataURL;
         }, false);
     
     //Size Canvas
@@ -32,6 +50,9 @@ window.onload=function()
     context.strokeStyle = "#000";
     context.lineJoin = "round";
     context.lineWidth = 5;
+    
+    //Hide Save Area
+    document.getElementById('saveArea').style.display = "none";
 }
 
 function handleMouseMove(e)
